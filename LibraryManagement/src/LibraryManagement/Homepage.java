@@ -16,6 +16,7 @@ public class Homepage extends javax.swing.JFrame {
      */
     public Homepage() {
         initComponents();
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -26,119 +27,160 @@ public class Homepage extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        btnBorrow = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        rSButtonMetro1 = new rsbuttom.RSButtonMetro();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        rSButtonMetro2 = new rsbuttom.RSButtonMetro();
+        rSButtonMetro3 = new rsbuttom.RSButtonMetro();
+        rSButtonMetro4 = new rsbuttom.RSButtonMetro();
+        rSButtonMetro5 = new rsbuttom.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(157, 198, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/Images/library_icon.jpg"))); // NOI18N
-        jLabel1.setText("THƯ VIỆN TỔNG HỢP");
+        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel2.setBackground(new java.awt.Color(157, 198, 204));
-
-        btnBorrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/Images/book_icon.png"))); // NOI18N
-        btnBorrow.setText("Mượn trả sách");
-        btnBorrow.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBorrowMouseClicked(evt);
+        rSButtonMetro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/menu.png"))); // NOI18N
+        rSButtonMetro1.setColorHover(new java.awt.Color(0, 204, 204));
+        rSButtonMetro1.setColorNormal(new java.awt.Color(0, 204, 204));
+        rSButtonMetro1.setColorPressed(new java.awt.Color(0, 204, 204));
+        rSButtonMetro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro1ActionPerformed(evt);
             }
         });
+        jPanel2.add(rSButtonMetro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 0, 74, 70));
 
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/Images/search_icon.png"))); // NOI18N
-        btnSearch.setText("Tìm kiếm sách");
-        btnSearch.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSearchMouseClicked(evt);
-            }
-        });
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/Images/ez logo.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 180, 60));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/Images/user_icon.png"))); // NOI18N
-        jButton3.setText("Đọc giả");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 884;
+        gridBagConstraints.ipady = 29;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 0.1;
+        jPanel1.add(jPanel2, gridBagConstraints);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBorrow)
-                .addGap(18, 18, 18)
-                .addComponent(btnSearch)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addContainerGap(480, Short.MAX_VALUE))
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+
+        rSButtonMetro2.setBackground(new java.awt.Color(255, 255, 255));
+        rSButtonMetro2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        rSButtonMetro2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/TIMSINHVIEN.png"))); // NOI18N
+        rSButtonMetro2.setText("SINH VIÊN");
+        rSButtonMetro2.setColorBorde(new javax.swing.border.MatteBorder(null));
+        rSButtonMetro2.setColorHover(new java.awt.Color(204, 204, 204));
+        rSButtonMetro2.setColorNormal(new java.awt.Color(255, 255, 255));
+        rSButtonMetro2.setColorPressed(new java.awt.Color(0, 204, 204));
+        rSButtonMetro2.setColorTextHover(new java.awt.Color(0, 0, 0));
+        rSButtonMetro2.setColorTextNormal(new java.awt.Color(153, 153, 153));
+        rSButtonMetro2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        rSButtonMetro2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        rSButtonMetro2.setIconTextGap(25);
+
+        rSButtonMetro3.setBackground(new java.awt.Color(255, 255, 255));
+        rSButtonMetro3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        rSButtonMetro3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/home.png"))); // NOI18N
+        rSButtonMetro3.setText("TRANG CHỦ");
+        rSButtonMetro3.setColorBorde(new javax.swing.border.MatteBorder(null));
+        rSButtonMetro3.setColorHover(new java.awt.Color(204, 204, 204));
+        rSButtonMetro3.setColorNormal(new java.awt.Color(255, 255, 255));
+        rSButtonMetro3.setColorPressed(new java.awt.Color(0, 204, 204));
+        rSButtonMetro3.setColorTextHover(new java.awt.Color(0, 0, 0));
+        rSButtonMetro3.setColorTextNormal(new java.awt.Color(153, 153, 153));
+        rSButtonMetro3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        rSButtonMetro3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        rSButtonMetro3.setIconTextGap(25);
+
+        rSButtonMetro4.setBackground(new java.awt.Color(255, 255, 255));
+        rSButtonMetro4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        rSButtonMetro4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/searchSACH.png"))); // NOI18N
+        rSButtonMetro4.setText("TÌM KIẾM SÁCH");
+        rSButtonMetro4.setColorBorde(new javax.swing.border.MatteBorder(null));
+        rSButtonMetro4.setColorHover(new java.awt.Color(204, 204, 204));
+        rSButtonMetro4.setColorNormal(new java.awt.Color(255, 255, 255));
+        rSButtonMetro4.setColorPressed(new java.awt.Color(0, 204, 204));
+        rSButtonMetro4.setColorTextHover(new java.awt.Color(0, 0, 0));
+        rSButtonMetro4.setColorTextNormal(new java.awt.Color(153, 153, 153));
+        rSButtonMetro4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        rSButtonMetro4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        rSButtonMetro4.setIconTextGap(25);
+
+        rSButtonMetro5.setBackground(new java.awt.Color(255, 255, 255));
+        rSButtonMetro5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        rSButtonMetro5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/collection.png"))); // NOI18N
+        rSButtonMetro5.setText("ĐANG MƯỢN");
+        rSButtonMetro5.setColorBorde(new javax.swing.border.MatteBorder(null));
+        rSButtonMetro5.setColorHover(new java.awt.Color(204, 204, 204));
+        rSButtonMetro5.setColorNormal(new java.awt.Color(255, 255, 255));
+        rSButtonMetro5.setColorPressed(new java.awt.Color(0, 204, 204));
+        rSButtonMetro5.setColorTextHover(new java.awt.Color(0, 0, 0));
+        rSButtonMetro5.setColorTextNormal(new java.awt.Color(153, 153, 153));
+        rSButtonMetro5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        rSButtonMetro5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        rSButtonMetro5.setIconTextGap(25);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(rSButtonMetro3, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(rSButtonMetro4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(rSButtonMetro5, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(rSButtonMetro2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBorrow)
-                    .addComponent(btnSearch)
-                    .addComponent(jButton3))
-                .addContainerGap(261, Short.MAX_VALUE))
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(rSButtonMetro3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(rSButtonMetro4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(rSButtonMetro5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(rSButtonMetro2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 1;
+        gridBagConstraints.ipady = 211;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weighty = 2.0;
+        gridBagConstraints.insets = new java.awt.Insets(1, 0, 0, 0);
+        jPanel1.add(jPanel3, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBorrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrowMouseClicked
+    private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
         // TODO add your handling code here:
-        new UserInfo().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnBorrowMouseClicked
-
-    private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
-        // TODO add your handling code here:
-        new Search().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnSearchMouseClicked
+    }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,11 +218,14 @@ public class Homepage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBorrow;
-    private javax.swing.JButton btnSearch;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private rsbuttom.RSButtonMetro rSButtonMetro1;
+    private rsbuttom.RSButtonMetro rSButtonMetro2;
+    private rsbuttom.RSButtonMetro rSButtonMetro3;
+    private rsbuttom.RSButtonMetro rSButtonMetro4;
+    private rsbuttom.RSButtonMetro rSButtonMetro5;
     // End of variables declaration//GEN-END:variables
 }
