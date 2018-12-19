@@ -158,7 +158,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(login()){
             this.setVisible(false);
-            new Search().setVisible(true);
+            new Homepage().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Thông tin đăng nhập sai!", "Thông báo", 1);
         }
