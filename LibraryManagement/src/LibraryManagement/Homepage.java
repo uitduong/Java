@@ -5,6 +5,9 @@
  */
 package LibraryManagement;
 
+import LibraryManagement.Helpers.Tools;
+import LibraryManagement.Helpers.Users;
+
 /**
  *
  * @author duong
@@ -33,6 +36,7 @@ public class Homepage extends javax.swing.JFrame {
         btnBorrow = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +84,13 @@ public class Homepage extends javax.swing.JFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/Images/user_icon.png"))); // NOI18N
         jButton3.setText("Đọc giả");
 
+        logoutBtn.setText("Đăng xuất");
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -91,7 +102,9 @@ public class Homepage extends javax.swing.JFrame {
                 .addComponent(btnSearch)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addContainerGap(480, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(logoutBtn)
+                .addContainerGap(378, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,7 +113,8 @@ public class Homepage extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBorrow)
                     .addComponent(btnSearch)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(261, Short.MAX_VALUE))
         );
 
@@ -139,6 +153,16 @@ public class Homepage extends javax.swing.JFrame {
         new Search().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSearchMouseClicked
+
+    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
+        // TODO add your handling code here:
+        String mac = Tools.getMac();
+        Users user           = new Users();
+        int id               = user.getIdUserByMac(mac);
+        user.setStatusById(id, Constant.status_inactive);
+        this.setVisible(false);
+        new Login().setVisible(true);
+    }//GEN-LAST:event_logoutBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -182,5 +206,6 @@ public class Homepage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton logoutBtn;
     // End of variables declaration//GEN-END:variables
 }

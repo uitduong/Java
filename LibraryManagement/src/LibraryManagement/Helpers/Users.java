@@ -5,6 +5,7 @@
  */
 package LibraryManagement.Helpers;
 
+import LibraryManagement.Constant;
 import LibraryManagement.JDBC;
 import java.sql.PreparedStatement;
 
@@ -106,5 +107,84 @@ public class Users {
             System.out.println("Error checkExists");
             return false;
         }
+    }
+    
+    public int getIdUser(String un){
+        try {
+            JDBC db = new JDBC();
+            String sql = "SELECT * FROM users";
+            db.stmt = db.conn.createStatement();
+            db.rs = db.stmt.executeQuery(sql);
+            while (db.rs.next())
+            {
+                String usernameInput = db.rs.getString("username");
+                int id = db.rs.getInt("id");
+                //Date dateCreated = db.rs.getDate("date_created");
+                if(un.equals(usernameInput)){
+                    return id;
+                }
+            }
+            db.stmt.close();
+            return 0;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+    
+    public int getIdUserByIp(String ip){
+        try {
+            JDBC db = new JDBC();
+            String sql = "SELECT * FROM users Where ip = '" + ip + "'";
+            db.stmt = db.conn.createStatement();
+            db.rs = db.stmt.executeQuery(sql);
+            while (db.rs.next())
+            {
+                return db.rs.getInt("id");
+            }
+            db.stmt.close();
+            return 0;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+    
+    public int getIdUserByMac(String mac){
+        try {
+            JDBC db = new JDBC();
+            String sql = "SELECT * FROM users Where mac = '" + mac + "'";
+            db.stmt = db.conn.createStatement();
+            db.rs = db.stmt.executeQuery(sql);
+            while (db.rs.next())
+            {
+                return db.rs.getInt("id");
+            }
+            db.stmt.close();
+            return 0;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+    
+    public void setStatusById(int id, int stt){
+        String sql;
+        if(stt == Constant.status_active){
+            String ip  = Tools.getIp();
+            String mac = Tools.getMac();
+            sql = "UPDATE users SET status = "+stt+", ip = '"+ip+"', mac = '"+mac+"' WHERE id = "+id;
+        } else {
+            sql = "UPDATE users SET status = "+stt+" WHERE id = "+id;
+        }
+        try {
+            JDBC db = new JDBC();
+            db.stmt = db.conn.createStatement();
+            db.stmt.executeUpdate(sql);
+            db.stmt.close();
+        } catch (Exception e) {
+            System.out.println("Error Set Status");
+        }
+    }
+    
+    public void getCurrentUser(){
+    
     }
 }

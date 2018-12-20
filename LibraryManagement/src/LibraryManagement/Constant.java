@@ -20,6 +20,9 @@ public class Constant {
     public static int type_create   = 1;
     public static int type_update   = 2;
     
+    public static int status_active   = 1;
+    public static int status_inactive = 2;
+    
     public static String getCurrentDate(){
         LocalDateTime now = LocalDateTime.now();
         int year = now.getYear();

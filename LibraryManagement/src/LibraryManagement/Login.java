@@ -5,6 +5,7 @@
  */
 package LibraryManagement;
 
+import LibraryManagement.Helpers.Tools;
 import LibraryManagement.Helpers.Users;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
@@ -191,9 +192,8 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(login()){
-            this.setVisible(false);
-            new Homepage().setVisible(true);
+        if(CheckLogin()){
+            login();
         } else {
             JOptionPane.showMessageDialog(null, "Thông tin đăng nhập sai!", "Thông báo", 1);
         }
@@ -202,9 +202,8 @@ public class Login extends javax.swing.JFrame {
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            if(login()){
-                this.setVisible(false);
-                new Homepage().setVisible(true);
+            if(CheckLogin()){
+                login();
             } else {
                 JOptionPane.showMessageDialog(null, "Thông tin đăng nhập sai!", "Thông báo", 1);
             }
@@ -219,11 +218,20 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
-    public boolean login(){
+    public boolean CheckLogin(){
         String inputUsername = jTextField1.getText();
         String inputPassword = new String(jPasswordField1.getPassword());
         Users user = new Users();
         return user.checkLogin(inputUsername, inputPassword);
+    }
+    
+    public void login(){
+        String inputUsername = jTextField1.getText();
+        Users user           = new Users();
+        int id               = user.getIdUser(inputUsername);
+        user.setStatusById(id, Constant.status_active);
+        this.setVisible(false);
+        new Homepage().setVisible(true);
     }
     
     /**
