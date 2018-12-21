@@ -5,6 +5,7 @@
  */
 package LibraryManagement;
 
+import LibraryManagement.Helpers.Users;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
@@ -20,6 +21,17 @@ public class Search extends javax.swing.JFrame {
      */
     public Search() {
         initComponents();
+        Users user = new Users();
+        user.getCurrentUser();
+        if(user.type == Constant.type_admin || user.type == Constant.type_employee){
+            btnAddBook.setVisible(true);
+            btnDelete.setVisible(true);
+            btnEdit.setVisible(true);
+        } else {
+            btnAddBook.setVisible(false);
+            btnDelete.setVisible(false);
+            btnEdit.setVisible(false);
+        }
     }
 
     /**

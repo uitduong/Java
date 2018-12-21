@@ -156,10 +156,9 @@ public class Homepage extends javax.swing.JFrame {
 
     private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
         // TODO add your handling code here:
-        String mac = Tools.getMac();
         Users user           = new Users();
-        int id               = user.getIdUserByMac(mac);
-        user.setStatusById(id, Constant.status_inactive);
+        user.getCurrentUser();
+        user.setStatusById(user.id, Constant.status_inactive);
         this.setVisible(false);
         new Login().setVisible(true);
     }//GEN-LAST:event_logoutBtnMouseClicked

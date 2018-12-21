@@ -14,16 +14,19 @@ import java.sql.PreparedStatement;
  * @author duong
  */
 public class Users {
-    public static int id;
-    public static String username;
-    public static String password;
-    public static String email;
-    public static String name;
-    public static String school;
-    public static String phone;
-    public static String dob;
-    public static int type;
-    public static String created_date;
+    public  int    id;
+    public  String username;
+    public  String password;
+    public  String email;
+    public  String name;
+    public  String school;
+    public  String phone;
+    public  String dob;
+    public  int    type;
+    public  String created_date;
+    public  String ip;
+    public  String mac;
+    public  int    status;
     
     public Users(String un, String pw, String em, String n, String sch, String p, String bd, int t){
         em       = em.equals("") ? null : em;
@@ -40,6 +43,34 @@ public class Users {
     }
     
     public Users(){}
+    
+    public void getUserById(int id){
+        try {
+            JDBC db = new JDBC();
+            String sql = "SELECT * FROM users Where id = " + id;
+            db.stmt = db.conn.createStatement();
+            db.rs = db.stmt.executeQuery(sql);
+            while (db.rs.next())
+            {
+                this.id             = db.rs.getInt("id");
+                this.username       = db.rs.getString("username");
+                this.password       = db.rs.getString("password");
+                this.email          = db.rs.getString("email");
+                this.name           = db.rs.getString("name");
+                this.school         = db.rs.getString("school");
+                this.phone          = db.rs.getString("phone");
+                this.dob            = db.rs.getString("dob");
+                this.type           = db.rs.getInt("type");
+                this.created_date   = db.rs.getString("created_date");
+                this.ip             = db.rs.getString("ip");
+                this.mac            = db.rs.getString("mac");
+                this.status         = db.rs.getInt("status");
+            }
+            db.stmt.close();
+        } catch (Exception e) {
+            System.out.println("Error getUserById");
+        }
+    }
     
     // Save a user to database
     public boolean save(){
@@ -185,6 +216,21 @@ public class Users {
     }
     
     public void getCurrentUser(){
-    
+        try {
+            String mac = Tools.getMac();
+            JDBC db = new JDBC();
+            String sql = "SELECT * FROM users Where mac = '" + mac + "' AND status = " + Constant.status_active;
+            db.stmt = db.conn.createStatement();
+            db.rs = db.stmt.executeQuery(sql);
+            int id = 0;
+            while (db.rs.next())
+            {
+                id = db.rs.getInt("id");
+            }
+            db.stmt.close();
+            this.getUserById(id);
+        } catch (Exception e) {
+            System.out.println("Error getCurrentUser");
+        }
     }
 }
