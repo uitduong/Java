@@ -55,8 +55,6 @@ public class crud_books extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         btnConfirm = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         txtTitle.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         txtTitle.setText("Thêm sách");
 

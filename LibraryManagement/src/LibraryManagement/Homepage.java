@@ -94,6 +94,11 @@ public class Homepage extends javax.swing.JFrame {
         rSButtonMetro2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         rSButtonMetro2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         rSButtonMetro2.setIconTextGap(25);
+        rSButtonMetro2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rSButtonMetro2MouseClicked(evt);
+            }
+        });
 
         rSButtonMetro3.setBackground(new java.awt.Color(255, 255, 255));
         rSButtonMetro3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -108,6 +113,11 @@ public class Homepage extends javax.swing.JFrame {
         rSButtonMetro3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         rSButtonMetro3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         rSButtonMetro3.setIconTextGap(25);
+        rSButtonMetro3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rSButtonMetro3MouseClicked(evt);
+            }
+        });
 
         btnSearch.setBackground(new java.awt.Color(255, 255, 255));
         btnSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -227,7 +237,7 @@ public class Homepage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrowMouseClicked
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
-        new Search().setVisible(true);
+        new Books().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSearchMouseClicked
 
@@ -239,6 +249,17 @@ public class Homepage extends javax.swing.JFrame {
         this.setVisible(false);
         new Login().setVisible(true);
     }//GEN-LAST:event_logoutBtnMouseClicked
+
+    private void rSButtonMetro3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSButtonMetro3MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_rSButtonMetro3MouseClicked
+
+    private void rSButtonMetro2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSButtonMetro2MouseClicked
+        // TODO add your handling code here:
+        new Students().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_rSButtonMetro2MouseClicked
             
     // Đăng xuất
 
@@ -268,6 +289,9 @@ public class Homepage extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Homepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
