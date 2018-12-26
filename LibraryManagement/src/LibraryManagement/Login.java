@@ -187,7 +187,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         this.setVisible(false);
-        new Regis().setVisible(true);        // TODO add your handling code here:
+        new Register().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

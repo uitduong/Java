@@ -329,7 +329,7 @@ public class Students extends javax.swing.JFrame {
     }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
     private void btnBorrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrowMouseClicked
-        new UserInfo().setVisible(true);
+        new Borrow().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnBorrowMouseClicked
 
