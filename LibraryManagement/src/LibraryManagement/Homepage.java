@@ -44,6 +44,7 @@ public class Homepage extends javax.swing.JFrame {
         rSButtonMetro3 = new rsbuttom.RSButtonMetro();
         btnSearch = new rsbuttom.RSButtonMetro();
         btnBorrow = new rsbuttom.RSButtonMetro();
+        logoutBtn = new rsbuttom.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,19 +147,35 @@ public class Homepage extends javax.swing.JFrame {
             }
         });
 
+        logoutBtn.setBackground(new java.awt.Color(255, 255, 255));
+        logoutBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/DANGXUAT.png"))); // NOI18N
+        logoutBtn.setText("ĐĂNG XUẤT");
+        logoutBtn.setActionCommand("ĐĂNG X");
+        logoutBtn.setColorBorde(new javax.swing.border.MatteBorder(null));
+        logoutBtn.setColorHover(new java.awt.Color(204, 204, 204));
+        logoutBtn.setColorNormal(new java.awt.Color(255, 255, 255));
+        logoutBtn.setColorPressed(new java.awt.Color(0, 204, 204));
+        logoutBtn.setColorTextHover(new java.awt.Color(0, 0, 0));
+        logoutBtn.setColorTextNormal(new java.awt.Color(153, 153, 153));
+        logoutBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        logoutBtn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        logoutBtn.setIconTextGap(25);
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(rSButtonMetro3, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBorrow, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rSButtonMetro2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1))
+            .addComponent(rSButtonMetro3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+            .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnBorrow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rSButtonMetro2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +187,9 @@ public class Homepage extends javax.swing.JFrame {
                 .addComponent(btnBorrow, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(rSButtonMetro2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(308, 308, 308))
+                .addGap(64, 64, 64)
+                .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -202,25 +221,27 @@ public class Homepage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
+    private void btnBorrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrowMouseClicked
+        new UserInfo().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBorrowMouseClicked
+
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
         new Search().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSearchMouseClicked
 
-    private void btnBorrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrowMouseClicked
-        new UserInfo().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnBorrowMouseClicked
-            
-    // Đăng xuất
-    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {                                       
+    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
         // TODO add your handling code here:
         Users user           = new Users();
         user.getCurrentUser();
         user.setStatusById(user.id, Constant.status_inactive);
         this.setVisible(false);
         new Login().setVisible(true);
-    }
+    }//GEN-LAST:event_logoutBtnMouseClicked
+            
+    // Đăng xuất
+
     
     /**
      * @param args the command line arguments
@@ -264,6 +285,7 @@ public class Homepage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private rsbuttom.RSButtonMetro logoutBtn;
     private rsbuttom.RSButtonMetro rSButtonMetro1;
     private rsbuttom.RSButtonMetro rSButtonMetro2;
     private rsbuttom.RSButtonMetro rSButtonMetro3;
