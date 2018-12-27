@@ -11,7 +11,11 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.logging.Level;
@@ -67,4 +71,41 @@ public class Tools {
         }
         return mysclass;
     }
+    
+    public static String addDate(String date, int number){
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar c = Calendar.getInstance();
+            c.setTime(sdf.parse(date));
+            c.add(Calendar.DATE, number);  // number of days to add
+            date = sdf.format(c.getTime());  // dt is now the new date
+            return date;
+        } catch (ParseException ex) {
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public static String now(){
+        LocalDateTime now = LocalDateTime.now();
+        int year = now.getYear();
+        int month = now.getMonthValue();
+        int day = now.getDayOfMonth();
+        return year + "-" + String.format("%02d", month) + "-" + String.format("%02d", day);
+    }
+    
+    // Convert Y-m-d to D-m-y and nguoc lai
+    public static String convertDate(String date){
+        String[] split = date.split("-");
+        StringBuilder sb = new StringBuilder();
+        for (int i = split.length-1; i >= 0; i--) {
+            sb.append(split[i]);
+            if (i != 0) {
+                sb.append("-");
+            }
+        }
+        String joined = sb.toString();
+        return joined;
+    }
+
 }

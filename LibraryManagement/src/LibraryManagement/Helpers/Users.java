@@ -8,6 +8,7 @@ package LibraryManagement.Helpers;
 import LibraryManagement.Constant;
 import LibraryManagement.JDBC;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -231,6 +232,36 @@ public class Users {
             this.getUserById(id);
         } catch (Exception e) {
             System.out.println("Error getCurrentUser");
+        }
+    }
+    
+    public void findByMssv(String mssv){
+        if(mssv.equals("")) return;
+        try {
+            JDBC db = new JDBC();
+            String sql = "SELECT * FROM users Where school like '" + mssv + "%'";
+            db.stmt = db.conn.createStatement();
+            db.rs = db.stmt.executeQuery(sql);
+            while (db.rs.next())
+            {
+                id              = db.rs.getInt("id");
+                username        = db.rs.getString("username");
+                password        = db.rs.getString("password");
+                email           = db.rs.getString("email");
+                name            = db.rs.getString("name");
+                school          = db.rs.getString("school");
+                phone           = db.rs.getString("phone");
+                dob             = db.rs.getString("dob");
+                type            = db.rs.getInt("type");
+                created_date    = db.rs.getString("created_date");
+                ip              = db.rs.getString("ip");
+                mac             = db.rs.getString("mac");
+                status          = db.rs.getInt("status");
+                break;
+            }
+            db.stmt.close();
+        } catch (SQLException e) {
+            System.out.println("Error Users findByMssv: " + e.getMessage());
         }
     }
 }

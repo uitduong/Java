@@ -26,6 +26,7 @@ public class crud_books extends javax.swing.JFrame {
             
     public crud_books() {
         initComponents();
+        backBtn.setVisible(false);
     }
 
     /**
@@ -39,7 +40,7 @@ public class crud_books extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtTitle = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -59,14 +60,13 @@ public class crud_books extends javax.swing.JFrame {
         txtTitle.setForeground(new java.awt.Color(0, 204, 204));
         txtTitle.setText("THÊM SÁCH");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 204, 204));
-        jButton1.setText("QUAY LẠI");
-        jButton1.setActionCommand("QUAY LẠI");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        backBtn.setBackground(new java.awt.Color(255, 255, 255));
+        backBtn.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        backBtn.setForeground(new java.awt.Color(0, 204, 204));
+        backBtn.setText("QUAY LẠI");
+        backBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                backBtnMouseClicked(evt);
             }
         });
 
@@ -158,7 +158,7 @@ public class crud_books extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(backBtn)
                 .addGap(192, 192, 192)
                 .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -173,7 +173,7 @@ public class crud_books extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(jButton1)
+                        .addComponent(backBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(50, Short.MAX_VALUE)
@@ -199,11 +199,11 @@ public class crud_books extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void backBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMouseClicked
         // TODO add your handling code here:
         new Search().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_backBtnMouseClicked
 
     private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
         // TODO add your handling code here:
@@ -311,8 +311,8 @@ public class crud_books extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backBtn;
     private javax.swing.JButton btnConfirm;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

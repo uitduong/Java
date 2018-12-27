@@ -334,7 +334,7 @@ public class Students extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrowMouseClicked
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
-        new Books().setVisible(true);
+        new Book().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSearchMouseClicked
 

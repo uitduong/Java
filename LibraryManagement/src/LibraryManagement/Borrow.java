@@ -6,12 +6,18 @@
 package LibraryManagement;
 
 import LibraryManagement.Constant;
+import LibraryManagement.Helpers.Tools;
 import LibraryManagement.Helpers.Users;
 import LibraryManagement.Login;
-import LibraryManagement.Search;
-import LibraryManagement.UserInfo;
+import java.awt.Frame;
+import java.awt.Window;
 import java.awt.event.KeyEvent;
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.lang.Object;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 /**
  *
  * @author duong
@@ -30,6 +36,9 @@ public class Borrow extends javax.swing.JFrame {
             btnAddBook.setVisible(true);
             btnDelete.setVisible(true);
             btnEdit.setVisible(true);
+            btnDelete.setEnabled(false);
+            btnEdit.setEnabled(false);
+            btnSetComplete.setEnabled(false);
         } else {
             btnAddBook.setVisible(false);
             btnDelete.setVisible(false);
@@ -48,13 +57,23 @@ public class Borrow extends javax.swing.JFrame {
         String[] arrayTitle = new String[] {"ID", "Tên user", "Tên sách", "Ngày mượn","Hạn trả","Đã trả"};
         jTable1.setModel(new javax.swing.table.DefaultTableModel(arrayBook, arrayTitle));
     }
-      public void refreshTable(){
+      
+    public void refreshTable(){
         JDBC jDB = new JDBC();
-        String sql = "Select id, name, author, description from books";
+        String sql = "SELECT br.id, us.name, bk.name, br.borrowed_date, br.expected_pay_date,br.real_pay_date FROM `borrows` br JOIN books bk JOIN users us ON bk.id = br.book_id and us.id = br.user_id ORDER BY `id`  ASC";
         Object[][] arrayBook = jDB.getObjectData(sql);
 
-        String[] arrayTitle = new String[] {"ID", "Tên", "Tác giả", "Mô tả"};
+        String[] arrayTitle = new String[] {"ID", "Tên user", "Tên sách", "Ngày mượn","Hạn trả","Đã trả"};
         jTable1.setModel(new javax.swing.table.DefaultTableModel(arrayBook, arrayTitle));
+    }
+    
+    public void refreshTableAt(JTable tb){
+        JDBC jDB = new JDBC();
+        String sql = "SELECT br.id, us.name, bk.name, br.borrowed_date, br.expected_pay_date,br.real_pay_date FROM `borrows` br JOIN books bk JOIN users us ON bk.id = br.book_id and us.id = br.user_id ORDER BY `id`  ASC";
+        Object[][] arrayBook = jDB.getObjectData(sql);
+
+        String[] arrayTitle = new String[] {"ID", "Tên user", "Tên sách", "Ngày mượn","Hạn trả","Đã trả"};
+        tb.setModel(new javax.swing.table.DefaultTableModel(arrayBook, arrayTitle));
     }
 
     /**
@@ -83,6 +102,7 @@ public class Borrow extends javax.swing.JFrame {
         btnAddBook = new rsbuttom.RSButtonMetro();
         btnDelete = new rsbuttom.RSButtonMetro();
         btnEdit = new rsbuttom.RSButtonMetro();
+        btnSetComplete = new rsbuttom.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -255,7 +275,7 @@ public class Borrow extends javax.swing.JFrame {
 
         jTable1.setDefaultEditor(Object.class, null);
         JDBC jDB = new JDBC();
-        String sql = "SELECT br.id, us.name, bk.name, br.borrowed_date, br.expected_pay_date,br.real_pay_date FROM `borrows` br JOIN books bk JOIN users us ON bk.id = br.book_id and us.id = br.user_id ORDER BY `user_id`  DESC";
+        String sql = "SELECT br.id, us.name, bk.name, br.borrowed_date, br.expected_pay_date,br.real_pay_date FROM `borrows` br JOIN books bk JOIN users us ON bk.id = br.book_id and us.id = br.user_id ORDER BY `id`  ASC";
         Object[][] arrayBook = jDB.getObjectData(sql);
 
         String[] arrayTitle = new String[] {"ID", "Tên user", "Tên sách", "Ngày mượn","Hạn trả","Đã trả"};
@@ -307,6 +327,17 @@ public class Borrow extends javax.swing.JFrame {
             }
         });
 
+        btnSetComplete.setBackground(new java.awt.Color(255, 255, 255));
+        btnSetComplete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/reset pass.png"))); // NOI18N
+        btnSetComplete.setColorHover(new java.awt.Color(255, 255, 255));
+        btnSetComplete.setColorNormal(new java.awt.Color(255, 255, 255));
+        btnSetComplete.setColorPressed(new java.awt.Color(0, 204, 204));
+        btnSetComplete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSetCompleteMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -323,7 +354,8 @@ public class Borrow extends javax.swing.JFrame {
                     .addComponent(rSButtonMetro4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSetComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(66, 66, 66))
         );
         jPanel1Layout.setVerticalGroup(
@@ -346,7 +378,10 @@ public class Borrow extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSetComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane1))
                         .addGap(180, 180, 180))))
         );
@@ -370,12 +405,12 @@ public class Borrow extends javax.swing.JFrame {
     }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
     private void btnBorrowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrowMouseClicked
-        new Borrow().setVisible(true);
-        this.setVisible(false);
+//        new Borrow().setVisible(true);
+//        this.setVisible(false);
     }//GEN-LAST:event_btnBorrowMouseClicked
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
-        new Books().setVisible(true);
+        new Book().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSearchMouseClicked
 
@@ -405,7 +440,22 @@ public class Borrow extends javax.swing.JFrame {
 
     private void btnAddBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddBookMouseClicked
         // TODO add your handling code here:
-        new crud_books("Thêm sách","OK").setVisible(true);
+        Window[] wd = Window.getWindows();
+        int i = 0;
+        for(Window w : wd){
+            if(w.isShowing()){
+                i++;
+            }
+        }
+        if(i >= 2) return;
+        crud_borrow ab = new crud_borrow();
+        ab.setVisible(true);
+        JTable tb = jTable1;
+        ab.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+                refreshTableAt(tb);
+            }
+        });
     }//GEN-LAST:event_btnAddBookMouseClicked
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -417,22 +467,28 @@ public class Borrow extends javax.swing.JFrame {
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
         // TODO add your handling code here:
         int selectedRow = jTable1.getSelectedRow();
-        String sql = "Select id, name, author, description from books";
-        JDBC jDB = new JDBC();
-        Object[][] book = jDB.getObjectData(sql);
-        int id = Integer.parseInt((String)book[selectedRow][0]);
-        new crud_books("Cập nhật thông tin sách", "Cập nhật", Constant.type_update, id).setVisible(true);
+        String id = jTable1.getModel().getValueAt(selectedRow, 0).toString();
+        crud_borrow c = new crud_borrow("Cập nhật thông tin mượn", "Cập nhật", Constant.type_update, Integer.parseInt(id));
+        c.setVisible(true);
+        JTable tb = jTable1;
+        c.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+                refreshTableAt(tb);
+            }
+        });
     }//GEN-LAST:event_btnEditMouseClicked
 
     private void btnDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMouseClicked
         // TODO add your handling code here:
-        int selectedRow = jTable1.getSelectedRow();
-        String sql = "Select id, name, author, description from books";
-        JDBC jDB = new JDBC();
-        Object[][] arrayBook = jDB.getObjectData(sql);
-        sql = "Delete from books where id = " + arrayBook[selectedRow][0];
-        jDB.execute(sql);
-        refreshTable();
+        int choose = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa?");
+        if(choose == 0){
+            int selectedRow = jTable1.getSelectedRow();
+            String id = jTable1.getModel().getValueAt(selectedRow, 0).toString();
+            JDBC jDB = new JDBC();
+            String sql = "Delete from borrows where id = " + id;
+            jDB.execute(sql);
+            refreshTable();
+        }
     }//GEN-LAST:event_btnDeleteMouseClicked
 
     private void rSButtonMetro3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSButtonMetro3MouseClicked
@@ -446,6 +502,16 @@ public class Borrow extends javax.swing.JFrame {
         new Students().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_rSButtonMetro2MouseClicked
+
+    private void btnSetCompleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSetCompleteMouseClicked
+        // TODO add your handling code here:
+        int selectedRow = jTable1.getSelectedRow();
+        String id = jTable1.getModel().getValueAt(selectedRow, 0).toString();
+        JDBC jDB = new JDBC();
+        String sql = "Update borrows set real_pay_date = '"+Tools.now()+"' where id = " + id;
+        jDB.execute(sql);
+        refreshTable();
+    }//GEN-LAST:event_btnSetCompleteMouseClicked
             
     // Đăng xuất
 
@@ -494,6 +560,7 @@ public class Borrow extends javax.swing.JFrame {
     private rsbuttom.RSButtonMetro btnDelete;
     private rsbuttom.RSButtonMetro btnEdit;
     private rsbuttom.RSButtonMetro btnSearch;
+    private rsbuttom.RSButtonMetro btnSetComplete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

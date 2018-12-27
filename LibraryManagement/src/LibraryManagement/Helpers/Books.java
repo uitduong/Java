@@ -7,6 +7,7 @@ package LibraryManagement.Helpers;
 
 import LibraryManagement.JDBC;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 /**
@@ -36,13 +37,6 @@ public class Books {
     // Save a user to database
     public boolean save(){
         try {
-            if( name.equals("") ||
-                author.equals("") ||
-                publisher.equals("") ||
-                type.equals("") ){
-                System.out.println("Empty required field!");
-                return false;
-            }
             LocalDateTime now = LocalDateTime.now();
             int year = now.getYear();
             int month = now.getMonthValue();
@@ -85,5 +79,30 @@ public class Books {
 
     public void setVisible(boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void findByName(String book_name){
+        if(book_name.equals("")) return;
+        try {
+            JDBC db = new JDBC();
+            String sql = "SELECT * FROM books Where name like '%" + book_name + "%'";
+            db.stmt = db.conn.createStatement();
+            db.rs = db.stmt.executeQuery(sql);
+            while (db.rs.next())
+            {
+                id             = db.rs.getInt("id");
+                name           = db.rs.getString("name");
+                author         = db.rs.getString("author");
+                type           = db.rs.getString("type");
+                publisher      = db.rs.getString("publisher");
+                description    = db.rs.getString("description");
+                total          = db.rs.getString("total");
+                latest_import  = db.rs.getString("latest_import");
+                break;
+            }
+            db.stmt.close();
+        } catch (SQLException e) {
+            System.out.println("Error Books findByName: " + e.getMessage());
+        }
     }
 }

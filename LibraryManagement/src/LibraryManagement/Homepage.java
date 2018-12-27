@@ -245,7 +245,7 @@ public class Homepage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrowMouseClicked
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
-        new Books().setVisible(true);
+        new Book().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSearchMouseClicked
 
@@ -260,8 +260,8 @@ public class Homepage extends javax.swing.JFrame {
 
     private void rSButtonMetro3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSButtonMetro3MouseClicked
         // TODO add your handling code here:
-        new Homepage().setVisible(true);
-        this.setVisible(false);
+//        new Homepage().setVisible(true);
+//        this.setVisible(false);
     }//GEN-LAST:event_rSButtonMetro3MouseClicked
 
     private void rSButtonMetro2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSButtonMetro2MouseClicked

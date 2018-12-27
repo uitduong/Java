@@ -46,7 +46,7 @@
               </Group>
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="backBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
                   <Component id="txtTitle" min="-2" pref="305" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -64,7 +64,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="backBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -93,7 +93,7 @@
             <Property name="text" type="java.lang.String" value="TH&#xca;M S&#xc1;CH"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="backBtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -105,10 +105,9 @@
               <Color blue="cc" green="cc" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="QUAY L&#x1ea0;I"/>
-            <Property name="actionCommand" type="java.lang.String" value="QUAY L&#x1ea0;I"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="backBtnMouseClicked"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel3">

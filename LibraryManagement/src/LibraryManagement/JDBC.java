@@ -14,7 +14,7 @@ public class JDBC {
     static final String DB_URL      = "jdbc:mysql://localhost:3306/Library_manager";
     static final String DB_DRV      = "com.mysql.jdbc.Driver";
     static final String DB_USER     = "root";
-    static final String DB_PASSWD   = "";
+    static final String DB_PASSWD   = "123";
     
     public Connection conn   = null;
     public Statement stmt    = null;

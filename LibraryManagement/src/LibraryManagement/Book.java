@@ -16,13 +16,13 @@ import java.awt.event.KeyEvent;
  *
  * @author duong
  */
-public class Books extends javax.swing.JFrame {
+public class Book extends javax.swing.JFrame {
 
     
     /**
      * Creates new form Homepage
      */
-    public Books() {
+    public Book() {
         initComponents();
         Users user = new Users();
         user.getCurrentUser();
@@ -30,6 +30,8 @@ public class Books extends javax.swing.JFrame {
             btnAddBook.setVisible(true);
             btnDelete.setVisible(true);
             btnEdit.setVisible(true);
+            btnDelete.setEnabled(false);
+            btnEdit.setEnabled(false);
         } else {
             btnAddBook.setVisible(false);
             btnDelete.setVisible(false);
@@ -375,8 +377,8 @@ public class Books extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBorrowMouseClicked
 
     private void btnSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSearchMouseClicked
-        new Books().setVisible(true);
-        this.setVisible(false);
+//        new Book().setVisible(true);
+//        this.setVisible(false);
     }//GEN-LAST:event_btnSearchMouseClicked
 
     private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
@@ -467,21 +469,23 @@ public class Books extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Books.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Book.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Books.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Book.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Books.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Book.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Books.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Book.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Books().setVisible(true);
+                new Book().setVisible(true);
             }
         });
     }
