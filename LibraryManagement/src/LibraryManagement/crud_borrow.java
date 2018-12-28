@@ -322,14 +322,14 @@ public class crud_borrow extends javax.swing.JFrame {
             br.id = Integer.toString(id);
             br.update();
         }
-        JOptionPane.showMessageDialog(null, "Thêm thành công!");
+//        JOptionPane.showMessageDialog(null, "Thêm thành công!");
+        this.dispose();
     }//GEN-LAST:event_btnConfirmMouseClicked
 
     private void txtBookKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBookKeyReleased
         // TODO add your handling code here:
         String txt = txtBook.getText();
         Books b = new Books();
-        System.out.println(txt);
         b.findByName(txt);
         if(b.name != null){
             spAuthor.setText(b.author);

@@ -440,6 +440,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rSButtonMetro4MouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rSButtonMetro4ActionPerformed"/>
           </Events>
         </Component>
@@ -477,7 +478,7 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable()"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTable1.setRowHeight(25);&#xa;&#xa;&#xa;jTable1.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseClicked(java.awt.event.MouseEvent evt) {&#xa;        jTable1MouseClicked(evt);&#xa;    }&#xa;});"/>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTable1.setDefaultEditor(Object.class, null);&#xa;JDBC jDB = new JDBC();&#xa;String sql = &quot;SELECT br.id, us.name, bk.name, br.borrowed_date, br.expected_pay_date,br.real_pay_date FROM `borrows` br JOIN books bk JOIN users us ON bk.id = br.book_id and us.id = br.user_id ORDER BY `id`  ASC&quot;;&#xa;Object[][] arrayBook = jDB.getObjectData(sql);&#xa;&#xa;String[] arrayTitle = new String[] {&quot;ID&quot;, &quot;T&#xea;n user&quot;, &quot;T&#xea;n s&#xe1;ch&quot;, &quot;Ng&#xe0;y m&#x1b0;&#x1ee3;n&quot;,&quot;H&#x1ea1;n tr&#x1ea3;&quot;,&quot;&#x110;&#xe3; tr&#x1ea3;&quot;};"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTable1.setDefaultEditor(Object.class, null);&#xa;JDBC jDB = new JDBC();&#xa;Users user = new Users();&#xa;user.getCurrentUser();&#xa;if(user.type == Constant.type_user){&#xa;    sqlCond = &quot; AND user_id = &quot; + user.id;&#xa;}&#xa;String sql = &quot;SELECT br.id, us.name, bk.name, br.borrowed_date, br.expected_pay_date,br.real_pay_date FROM `borrows` br JOIN books bk JOIN users us ON bk.id = br.book_id and us.id = br.user_id &quot;+sqlCond+&quot; ORDER BY `id`  ASC&quot;;&#xa;Object[][] arrayBook = jDB.getObjectData(sql);&#xa;&#xa;String[] arrayTitle = new String[] {&quot;ID&quot;, &quot;T&#xea;n user&quot;, &quot;T&#xea;n s&#xe1;ch&quot;, &quot;Ng&#xe0;y m&#x1b0;&#x1ee3;n&quot;,&quot;H&#x1ea1;n tr&#x1ea3;&quot;,&quot;&#x110;&#xe3; tr&#x1ea3;&quot;};"/>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
               </AuxValues>
             </Component>

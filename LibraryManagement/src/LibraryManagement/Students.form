@@ -55,6 +55,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="rSButtonMetro4" min="-2" pref="58" max="-2" attributes="0"/>
                       <Component id="btnReset" min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="btnEdit" min="-2" pref="58" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
               </Group>
@@ -83,6 +84,8 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="btnReset" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnEdit" min="-2" pref="54" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -467,7 +470,7 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable()"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jTable1.setRowHeight(25);&#xa;&#xa;&#xa;jTable1.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseClicked(java.awt.event.MouseEvent evt) {&#xa;        jTable1MouseClicked(evt);&#xa;    }&#xa;});"/>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTable1.setDefaultEditor(Object.class, null);&#xa;JDBC jDB = new JDBC();&#xa;String sql = &quot;Select id, name, phone, dob from users&quot;;&#xa;Object[][] arrayBook = jDB.getObjectData(sql);&#xa;&#xa;String[] arrayTitle = new String[] {&quot;ID&quot;, &quot;T&#xea;n&quot;, &quot;S&#x110;T&quot;, &quot;Ng&#xe0;y sinh&quot;};"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTable1.setDefaultEditor(Object.class, null);&#xa;JDBC jDB = new JDBC();&#xa;Users user = new Users();&#xa;user.getCurrentUser();&#xa;if(user.type == Constant.type_user){&#xa;    sqlCond = &quot; AND id = &quot; + user.id;&#xa;}&#xa;String sql = &quot;Select id, name, phone, dob from users WHERE 1 &quot; + sqlCond;&#xa;Object[][] arrayBook = jDB.getObjectData(sql);&#xa;&#xa;String[] arrayTitle = new String[] {&quot;ID&quot;, &quot;T&#xea;n&quot;, &quot;S&#x110;T&quot;, &quot;Ng&#xe0;y sinh&quot;};"/>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
               </AuxValues>
             </Component>
@@ -493,6 +496,28 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnResetMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="rsbuttom.RSButtonMetro" name="btnEdit">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/LibraryManagement/img/butchi.png"/>
+            </Property>
+            <Property name="colorHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="colorNormal" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="colorPressed" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="0" type="rgb"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnEditMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>

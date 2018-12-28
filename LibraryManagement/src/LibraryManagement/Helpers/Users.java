@@ -101,6 +101,26 @@ public class Users {
         }
     }
     
+    public boolean update(){
+        try {
+            JDBC db = new JDBC();
+            PreparedStatement stm = db.conn.prepareStatement("UPDATE users SET username = ?, password = ?, email = ?, name = ?, school = ?, phone = ?, dob = ?, type = ? WHERE id = " + id);
+            stm.setString(1, username);
+            stm.setString(2, password);
+            stm.setString(3, email);
+            stm.setString(4, name);
+            stm.setString(5, school);
+            stm.setString(6, phone);
+            stm.setString(7, dob);
+            stm.setInt(8, type);
+            stm.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
     // Check login infomation
     public boolean checkLogin(String un, String pw){
         try {

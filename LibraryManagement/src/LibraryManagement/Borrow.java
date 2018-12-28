@@ -28,6 +28,7 @@ public class Borrow extends javax.swing.JFrame {
     /**
      * Creates new form Homepage
      */
+    public String sqlCond = "";
     public Borrow() {
         initComponents();
         Users user = new Users();
@@ -39,18 +40,21 @@ public class Borrow extends javax.swing.JFrame {
             btnDelete.setEnabled(false);
             btnEdit.setEnabled(false);
             btnSetComplete.setEnabled(false);
+            btnSetComplete.setVisible(true);
         } else {
             btnAddBook.setVisible(false);
             btnDelete.setVisible(false);
             btnEdit.setVisible(false);
+            btnSetComplete.setVisible(false);
+            sqlCond = " AND user_id = " + user.id;
         }
     }
       public void search(){
         String inputSearch = txtSearch.getText();
         JDBC db = new JDBC();
         String sql = "SELECT br.id, us.name, bk.name, br.borrowed_date, br.expected_pay_date,br.real_pay_date FROM `borrows` br JOIN books bk JOIN users us ON bk.id = br.book_id and us.id = br.user_id "
-                + " Where bk.name like '%" + inputSearch + "%' "
-                + " or us.name like '%" + inputSearch + "%' ";
+                + " Where (bk.name like '%" + inputSearch + "%' "
+                + " or us.name like '%" + inputSearch + "%' ) " + sqlCond;
                 //+ " Or b.description like '%" + inputSearch + "%'";
                 //+ " Or a.name like '%" + inputSearch + "%'";
         Object[][] arrayBook = db.getObjectData(sql);
@@ -60,7 +64,7 @@ public class Borrow extends javax.swing.JFrame {
       
     public void refreshTable(){
         JDBC jDB = new JDBC();
-        String sql = "SELECT br.id, us.name, bk.name, br.borrowed_date, br.expected_pay_date,br.real_pay_date FROM `borrows` br JOIN books bk JOIN users us ON bk.id = br.book_id and us.id = br.user_id ORDER BY `id`  ASC";
+        String sql = "SELECT br.id, us.name, bk.name, br.borrowed_date, br.expected_pay_date,br.real_pay_date FROM `borrows` br JOIN books bk JOIN users us ON bk.id = br.book_id and us.id = br.user_id "+sqlCond+" ORDER BY `id`  ASC";
         Object[][] arrayBook = jDB.getObjectData(sql);
 
         String[] arrayTitle = new String[] {"ID", "Tên user", "Tên sách", "Ngày mượn","Hạn trả","Đã trả"};
@@ -69,7 +73,7 @@ public class Borrow extends javax.swing.JFrame {
     
     public void refreshTableAt(JTable tb){
         JDBC jDB = new JDBC();
-        String sql = "SELECT br.id, us.name, bk.name, br.borrowed_date, br.expected_pay_date,br.real_pay_date FROM `borrows` br JOIN books bk JOIN users us ON bk.id = br.book_id and us.id = br.user_id ORDER BY `id`  ASC";
+        String sql = "SELECT br.id, us.name, bk.name, br.borrowed_date, br.expected_pay_date,br.real_pay_date FROM `borrows` br JOIN books bk JOIN users us ON bk.id = br.book_id and us.id = br.user_id "+sqlCond+" ORDER BY `id`  ASC";
         Object[][] arrayBook = jDB.getObjectData(sql);
 
         String[] arrayTitle = new String[] {"ID", "Tên user", "Tên sách", "Ngày mượn","Hạn trả","Đã trả"};
@@ -255,6 +259,11 @@ public class Borrow extends javax.swing.JFrame {
         rSButtonMetro4.setColorHover(new java.awt.Color(255, 255, 255));
         rSButtonMetro4.setColorNormal(new java.awt.Color(255, 255, 255));
         rSButtonMetro4.setColorPressed(new java.awt.Color(0, 204, 204));
+        rSButtonMetro4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rSButtonMetro4MouseClicked(evt);
+            }
+        });
         rSButtonMetro4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rSButtonMetro4ActionPerformed(evt);
@@ -275,7 +284,12 @@ public class Borrow extends javax.swing.JFrame {
 
         jTable1.setDefaultEditor(Object.class, null);
         JDBC jDB = new JDBC();
-        String sql = "SELECT br.id, us.name, bk.name, br.borrowed_date, br.expected_pay_date,br.real_pay_date FROM `borrows` br JOIN books bk JOIN users us ON bk.id = br.book_id and us.id = br.user_id ORDER BY `id`  ASC";
+        Users user = new Users();
+        user.getCurrentUser();
+        if(user.type == Constant.type_user){
+            sqlCond = " AND user_id = " + user.id;
+        }
+        String sql = "SELECT br.id, us.name, bk.name, br.borrowed_date, br.expected_pay_date,br.real_pay_date FROM `borrows` br JOIN books bk JOIN users us ON bk.id = br.book_id and us.id = br.user_id "+sqlCond+" ORDER BY `id`  ASC";
         Object[][] arrayBook = jDB.getObjectData(sql);
 
         String[] arrayTitle = new String[] {"ID", "Tên user", "Tên sách", "Ngày mượn","Hạn trả","Đã trả"};
@@ -452,7 +466,8 @@ public class Borrow extends javax.swing.JFrame {
         ab.setVisible(true);
         JTable tb = jTable1;
         ab.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent evt) {
+            @Override
+            public void windowClosed(WindowEvent evt) {
                 refreshTableAt(tb);
             }
         });
@@ -512,6 +527,11 @@ public class Borrow extends javax.swing.JFrame {
         jDB.execute(sql);
         refreshTable();
     }//GEN-LAST:event_btnSetCompleteMouseClicked
+
+    private void rSButtonMetro4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSButtonMetro4MouseClicked
+        // TODO add your handling code here:
+        search();
+    }//GEN-LAST:event_rSButtonMetro4MouseClicked
             
     // Đăng xuất
 

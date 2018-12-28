@@ -87,6 +87,16 @@ public class crud_books extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jLabel6.setText("Mô tả:");
 
+        txtName.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+
+        txtAuthor.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+
+        txtType.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+
+        txtPublisher.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+
+        txtDes.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -238,15 +248,14 @@ public class crud_books extends javax.swing.JFrame {
             + " Where id     = " + id;
             JDBC jDB = new JDBC();
             jDB.execute(sql);
-            JOptionPane.showMessageDialog(null, "Cập nhật thành công!");
+//            JOptionPane.showMessageDialog(null, "Cập nhật thành công!");
         } else {
             Books b = new Books(name, author, type, publisher, des);
             if(b.save()){
-                JOptionPane.showMessageDialog(null, "Thêm sách thành công!");
+//                JOptionPane.showMessageDialog(null, "Thêm sách thành công!");
             }
         }
-        this.setVisible(false);
-        new Books().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnConfirmMouseClicked
                  
 

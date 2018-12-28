@@ -10,7 +10,11 @@ import LibraryManagement.Helpers.Users;
 import LibraryManagement.Login;
 import LibraryManagement.Search;
 import LibraryManagement.UserInfo;
+import java.awt.Window;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JTable;
 
 /**
  *
@@ -50,13 +54,23 @@ public class Book extends javax.swing.JFrame {
         String[] arrayTitle = new String[] {"ID", "Tên", "Tác giả", "Mô tả"};
         jTable1.setModel(new javax.swing.table.DefaultTableModel(arrayBook, arrayTitle));
     }
-      public void refreshTable(){
+      
+    public void refreshTable(){
         JDBC jDB = new JDBC();
         String sql = "Select id, name, author, description from books";
         Object[][] arrayBook = jDB.getObjectData(sql);
 
         String[] arrayTitle = new String[] {"ID", "Tên", "Tác giả", "Mô tả"};
         jTable1.setModel(new javax.swing.table.DefaultTableModel(arrayBook, arrayTitle));
+    }
+    
+    public void refreshTableAt(JTable tb){
+        JDBC jDB = new JDBC();
+        String sql = "Select id, name, author, description from books";
+        Object[][] arrayBook = jDB.getObjectData(sql);
+
+        String[] arrayTitle = new String[] {"ID", "Tên", "Tác giả", "Mô tả"};
+        tb.setModel(new javax.swing.table.DefaultTableModel(arrayBook, arrayTitle));
     }
 
     /**
@@ -261,6 +275,7 @@ public class Book extends javax.swing.JFrame {
         Object[][] arrayBook = jDB.getObjectData(sql);
 
         String[] arrayTitle = new String[] {"ID", "Tên", "Tác giả", "Mô tả"};
+        jTable1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(arrayBook, arrayTitle));
         jTable1.setRowHeight(25);
 
@@ -407,7 +422,23 @@ public class Book extends javax.swing.JFrame {
 
     private void btnAddBookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddBookMouseClicked
         // TODO add your handling code here:
-        new crud_books("Thêm sách","OK").setVisible(true);
+        Window[] wd = Window.getWindows();
+        int i = 0;
+        for(Window w : wd){
+            if(w.isShowing()){
+                i++;
+            }
+        }
+        if(i >= 2) return;
+        crud_books ab = new crud_books("Thêm sách","OK");
+        ab.setVisible(true);
+        JTable tb = jTable1;
+        ab.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent evt) {
+                refreshTableAt(tb);
+            }
+        });
     }//GEN-LAST:event_btnAddBookMouseClicked
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -423,7 +454,23 @@ public class Book extends javax.swing.JFrame {
         JDBC jDB = new JDBC();
         Object[][] book = jDB.getObjectData(sql);
         int id = Integer.parseInt((String)book[selectedRow][0]);
-        new crud_books("Cập nhật thông tin sách", "Cập nhật", Constant.type_update, id).setVisible(true);
+        Window[] wd = Window.getWindows();
+        int i = 0;
+        for(Window w : wd){
+            if(w.isShowing()){
+                i++;
+            }
+        }
+        if(i >= 2) return;
+        crud_books ab = new crud_books("Cập nhật thông tin sách", "Cập nhật", Constant.type_update, id);
+        ab.setVisible(true);
+        JTable tb = jTable1;
+        ab.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent evt) {
+                refreshTableAt(tb);
+            }
+        });
     }//GEN-LAST:event_btnEditMouseClicked
 
     private void btnDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMouseClicked

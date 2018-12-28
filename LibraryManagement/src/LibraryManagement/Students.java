@@ -11,6 +11,10 @@ import LibraryManagement.Login;
 import LibraryManagement.Search;
 import LibraryManagement.UserInfo;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -22,10 +26,20 @@ public class Students extends javax.swing.JFrame {
     /**
      * Creates new form Homepage
      */
+    public String sqlCond = "";
     public Students() {
         initComponents();
         Users user = new Users();
         user.getCurrentUser();
+        if(user.type == Constant.type_admin || user.type == Constant.type_employee){
+            btnReset.setVisible(true);
+            btnReset.setEnabled(false);
+            btnEdit.setVisible(false);
+        } else {
+            btnReset.setVisible(false);
+            sqlCond = " AND id = " + user.id;
+            btnEdit.setVisible(true);
+        }
        
     }
       public void search(){
@@ -33,7 +47,7 @@ public class Students extends javax.swing.JFrame {
         JDBC db = new JDBC();
         String sql = "Select id, name, phone, dob "
                 + " From users"
-                + " Where name like '%" + inputSearch + "%' ";
+                + " Where name like '%" + inputSearch + "%' "+sqlCond;
                 //+ " Or b.description like '%" + inputSearch + "%'";
                 //+ " Or a.name like '%" + inputSearch + "%'";
         Object[][] arrayBook = db.getObjectData(sql);
@@ -42,7 +56,7 @@ public class Students extends javax.swing.JFrame {
     }
       public void refreshTable(){
         JDBC jDB = new JDBC();
-        String sql = "Select id, name, phone, dob from users";
+        String sql = "Select id, name, phone, dob from users WHERE 1 " + sqlCond;
         Object[][] arrayBook = jDB.getObjectData(sql);
 
         String[] arrayTitle = new String[] {"ID", "Tên", "SĐT", "Ngày sinh"};
@@ -73,6 +87,7 @@ public class Students extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnReset = new rsbuttom.RSButtonMetro();
+        btnEdit = new rsbuttom.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -240,7 +255,12 @@ public class Students extends javax.swing.JFrame {
 
         jTable1.setDefaultEditor(Object.class, null);
         JDBC jDB = new JDBC();
-        String sql = "Select id, name, phone, dob from users";
+        Users user = new Users();
+        user.getCurrentUser();
+        if(user.type == Constant.type_user){
+            sqlCond = " AND id = " + user.id;
+        }
+        String sql = "Select id, name, phone, dob from users WHERE 1 " + sqlCond;
         Object[][] arrayBook = jDB.getObjectData(sql);
 
         String[] arrayTitle = new String[] {"ID", "Tên", "SĐT", "Ngày sinh"};
@@ -270,6 +290,17 @@ public class Students extends javax.swing.JFrame {
             }
         });
 
+        btnEdit.setBackground(new java.awt.Color(255, 255, 255));
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/butchi.png"))); // NOI18N
+        btnEdit.setColorHover(new java.awt.Color(255, 255, 255));
+        btnEdit.setColorNormal(new java.awt.Color(255, 255, 255));
+        btnEdit.setColorPressed(new java.awt.Color(0, 204, 204));
+        btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -284,7 +315,8 @@ public class Students extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rSButtonMetro4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(66, 66, 66))
         );
         jPanel1Layout.setVerticalGroup(
@@ -307,6 +339,8 @@ public class Students extends javax.swing.JFrame {
                                 .addGap(180, 180, 180))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
 
@@ -376,14 +410,34 @@ public class Students extends javax.swing.JFrame {
     private void btnResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResetMouseClicked
         // TODO add your handling code here:
         int selectedRow = jTable1.getSelectedRow();
-        String sql = "Select id, name, author, description from books";
+        String id = jTable1.getModel().getValueAt(selectedRow, 0).toString();
+        String sql = "Update users set password = '123' WHERE id = "+id;
         JDBC jDB = new JDBC();
-        Object[][] book = jDB.getObjectData(sql);
-        int id = Integer.parseInt((String)book[selectedRow][0]);
-        new crud_books("Cập nhật thông tin sách", "Cập nhật", Constant.type_update, id).setVisible(true);
+        jDB.execute(sql);
+        JOptionPane.showMessageDialog(null, "Mật khẩu của bạn đã được đặt lại mặc định là '123'");
     }//GEN-LAST:event_btnResetMouseClicked
+
+    private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
+        // TODO add your handling code here:
+        UpdateStudentInfo c = new UpdateStudentInfo();
+        c.setVisible(true);
+        JTable tb = jTable1;
+        c.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent evt) {
+                refreshTableAt(tb);
+            }
+        });
+    }//GEN-LAST:event_btnEditMouseClicked
             
-    // Đăng xuất
+    public void refreshTableAt(JTable tb){
+        JDBC jDB = new JDBC();
+        String sql = "Select id, name, phone, dob from users WHERE 1 " +sqlCond;
+        Object[][] arrayBook = jDB.getObjectData(sql);
+
+        String[] arrayTitle = new String[] {"ID", "Tên", "SĐT", "Ngày sinh"};
+        tb.setModel(new javax.swing.table.DefaultTableModel(arrayBook, arrayTitle));
+    }
 
     
     /**
@@ -426,6 +480,7 @@ public class Students extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rsbuttom.RSButtonMetro btnBorrow;
+    private rsbuttom.RSButtonMetro btnEdit;
     private rsbuttom.RSButtonMetro btnReset;
     private rsbuttom.RSButtonMetro btnSearch;
     private javax.swing.JLabel jLabel1;
