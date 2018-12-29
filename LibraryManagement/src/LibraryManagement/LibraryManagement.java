@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package LibraryManagement;
-import LibraryManagement.Helpers.*;
 import java.sql.*;
-import javax.swing.ImageIcon;
 /**
  *
  * @author duong

@@ -5,11 +5,7 @@
  */
 package LibraryManagement;
 
-import LibraryManagement.Constant;
 import LibraryManagement.Helpers.Users;
-import LibraryManagement.Login;
-import LibraryManagement.Search;
-import LibraryManagement.UserInfo;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
@@ -131,7 +127,7 @@ public class Book extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         rSButtonMetro2.setBackground(new java.awt.Color(255, 255, 255));
-        rSButtonMetro2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        rSButtonMetro2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 0));
         rSButtonMetro2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/TIMSINHVIEN.png"))); // NOI18N
         rSButtonMetro2.setText("SINH VIÊN");
         rSButtonMetro2.setColorBorde(new javax.swing.border.MatteBorder(null));
@@ -150,7 +146,7 @@ public class Book extends javax.swing.JFrame {
         });
 
         rSButtonMetro3.setBackground(new java.awt.Color(255, 255, 255));
-        rSButtonMetro3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        rSButtonMetro3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 0));
         rSButtonMetro3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/home.png"))); // NOI18N
         rSButtonMetro3.setText("TRANG CHỦ");
         rSButtonMetro3.setColorBorde(new javax.swing.border.MatteBorder(null));
@@ -169,7 +165,7 @@ public class Book extends javax.swing.JFrame {
         });
 
         btnSearch.setBackground(new java.awt.Color(255, 255, 255));
-        btnSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 0));
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/searchSACH.png"))); // NOI18N
         btnSearch.setText("TÌM KIẾM SÁCH");
         btnSearch.setColorBorde(new javax.swing.border.MatteBorder(null));
@@ -188,7 +184,7 @@ public class Book extends javax.swing.JFrame {
         });
 
         btnBorrow.setBackground(new java.awt.Color(255, 255, 255));
-        btnBorrow.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnBorrow.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 0));
         btnBorrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/collection.png"))); // NOI18N
         btnBorrow.setText("ĐANG MƯỢN");
         btnBorrow.setColorBorde(new javax.swing.border.MatteBorder(null));
@@ -207,7 +203,7 @@ public class Book extends javax.swing.JFrame {
         });
 
         logoutBtn.setBackground(new java.awt.Color(255, 255, 255));
-        logoutBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        logoutBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 0));
         logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/DANGXUAT.png"))); // NOI18N
         logoutBtn.setText("ĐĂNG XUẤT");
         logoutBtn.setActionCommand("ĐĂNG X");
