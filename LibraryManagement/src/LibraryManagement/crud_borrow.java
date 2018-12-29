@@ -10,6 +10,7 @@ import LibraryManagement.Helpers.Borrows;
 import LibraryManagement.Helpers.Tools;
 import LibraryManagement.Helpers.Users;
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,6 +29,7 @@ public class crud_borrow extends javax.swing.JFrame {
     
     public crud_borrow() {
         initComponents();
+        seticon();
         type = Constant.type_create;
         txtDateBorrow.setText(Tools.convertDate(Tools.now()));
         txtPayDate.setText(Tools.convertDate(Tools.addDate(Tools.now(), 14)));
@@ -262,7 +264,9 @@ public class crud_borrow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ public void seticon() {
+       setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("favicon.png")));
+    }
     private void txtDateBorrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateBorrowActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDateBorrowActionPerformed

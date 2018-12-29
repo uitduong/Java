@@ -7,6 +7,7 @@ package LibraryManagement;
 
 import LibraryManagement.Helpers.Tools;
 import LibraryManagement.Helpers.Users;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
 
@@ -21,6 +22,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        seticon();
     }
 
     /**
@@ -58,6 +60,7 @@ public class Login extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Phần mềm quản lý thư viện");
         setBackground(new java.awt.Color(154, 195, 202));
         getContentPane().setLayout(new java.awt.CardLayout());
 
@@ -184,7 +187,9 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ public void seticon() {
+       setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("favicon.png")));
+    }
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         this.setVisible(false);
         new Register().setVisible(true);        // TODO add your handling code here:

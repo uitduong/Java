@@ -10,6 +10,7 @@ import LibraryManagement.Helpers.Tools;
 import LibraryManagement.Helpers.Users;
 import LibraryManagement.Login;
 import java.awt.Frame;
+import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -23,7 +24,7 @@ import javax.swing.JTable;
  * @author duong
  */
 public class Borrow extends javax.swing.JFrame {
-
+    
     
     /**
      * Creates new form Homepage
@@ -31,6 +32,7 @@ public class Borrow extends javax.swing.JFrame {
     public String sqlCond = "";
     public Borrow() {
         initComponents();
+        seticon();
         Users user = new Users();
         user.getCurrentUser();
         if(user.type == Constant.type_admin || user.type == Constant.type_employee){
@@ -48,6 +50,9 @@ public class Borrow extends javax.swing.JFrame {
             btnSetComplete.setVisible(false);
             sqlCond = " AND user_id = " + user.id;
         }
+    }
+     public void seticon() {
+       setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("favicon.png")));
     }
       public void search(){
         String inputSearch = txtSearch.getText();
@@ -109,6 +114,7 @@ public class Borrow extends javax.swing.JFrame {
         btnSetComplete = new rsbuttom.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Phần mềm quản lý thư viện");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -342,7 +348,7 @@ public class Borrow extends javax.swing.JFrame {
         });
 
         btnSetComplete.setBackground(new java.awt.Color(255, 255, 255));
-        btnSetComplete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/reset pass.png"))); // NOI18N
+        btnSetComplete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LibraryManagement/img/check.png"))); // NOI18N
         btnSetComplete.setColorHover(new java.awt.Color(255, 255, 255));
         btnSetComplete.setColorNormal(new java.awt.Color(255, 255, 255));
         btnSetComplete.setColorPressed(new java.awt.Color(0, 204, 204));
@@ -477,6 +483,7 @@ public class Borrow extends javax.swing.JFrame {
         // TODO add your handling code here:
         btnEdit.setEnabled(true);
         btnDelete.setEnabled(true);
+        btnSetComplete.setEnabled(true);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked

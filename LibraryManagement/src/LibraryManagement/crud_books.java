@@ -8,6 +8,7 @@ package LibraryManagement;
 import LibraryManagement.Helpers.Books;
 import static LibraryManagement.Helpers.Books.*;
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,8 +26,9 @@ public class crud_books extends javax.swing.JFrame {
     public int id;
             
     public crud_books() {
+        seticon();
         initComponents();
-        backBtn.setVisible(false);
+       
     }
 
     /**
@@ -40,7 +42,6 @@ public class crud_books extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtTitle = new javax.swing.JLabel();
-        backBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -54,21 +55,13 @@ public class crud_books extends javax.swing.JFrame {
         txtDes = new javax.swing.JTextField();
         btnConfirm = new javax.swing.JButton();
 
+        setTitle("Phần mềm quản lý thư viện");
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         txtTitle.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         txtTitle.setForeground(new java.awt.Color(0, 204, 204));
         txtTitle.setText("THÊM SÁCH");
-
-        backBtn.setBackground(new java.awt.Color(255, 255, 255));
-        backBtn.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        backBtn.setForeground(new java.awt.Color(0, 204, 204));
-        backBtn.setText("QUAY LẠI");
-        backBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backBtnMouseClicked(evt);
-            }
-        });
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -167,9 +160,7 @@ public class crud_books extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backBtn)
-                .addGap(192, 192, 192)
+                .addGap(323, 323, 323)
                 .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -180,15 +171,9 @@ public class crud_books extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(backBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(50, Short.MAX_VALUE)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)))
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,13 +193,9 @@ public class crud_books extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backBtnMouseClicked
-        // TODO add your handling code here:
-        new Search().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_backBtnMouseClicked
-
+ public void seticon() {
+       setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("favicon.png")));
+    }
     private void btnConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirmMouseClicked
         // TODO add your handling code here:
         String name      = txtName.getText();
@@ -320,7 +301,6 @@ public class crud_books extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backBtn;
     private javax.swing.JButton btnConfirm;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

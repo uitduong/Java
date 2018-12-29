@@ -6,6 +6,7 @@
 package LibraryManagement;
 
 import LibraryManagement.Helpers.Users;
+import java.awt.Toolkit;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
@@ -20,6 +21,10 @@ public class Register extends javax.swing.JFrame {
      */
     public Register() {
         initComponents();
+        seticon();
+    }
+     public void seticon() {
+       setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("favicon.png")));
     }
 
     /**
@@ -71,6 +76,7 @@ public class Register extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Phần mềm quản lý thư viện");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

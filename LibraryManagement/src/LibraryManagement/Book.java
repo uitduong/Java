@@ -10,6 +10,7 @@ import LibraryManagement.Helpers.Users;
 import LibraryManagement.Login;
 import LibraryManagement.Search;
 import LibraryManagement.UserInfo;
+import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -28,6 +29,7 @@ public class Book extends javax.swing.JFrame {
      */
     public Book() {
         initComponents();
+        seticon();
         Users user = new Users();
         user.getCurrentUser();
         if(user.type == Constant.type_admin || user.type == Constant.type_employee){
@@ -41,6 +43,9 @@ public class Book extends javax.swing.JFrame {
             btnDelete.setVisible(false);
             btnEdit.setVisible(false);
         }
+    }
+     public void seticon() {
+       setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("favicon.png")));
     }
       public void search(){
         String inputSearch = txtSearch.getText();
@@ -101,6 +106,7 @@ public class Book extends javax.swing.JFrame {
         btnEdit = new rsbuttom.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Phần mềm quản lý thư viện");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

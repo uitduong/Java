@@ -10,7 +10,9 @@ import LibraryManagement.Helpers.Users;
 import LibraryManagement.Login;
 import LibraryManagement.Search;
 import LibraryManagement.UserInfo;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -24,10 +26,13 @@ public class Homepage extends javax.swing.JFrame {
      */
     public Homepage() {
         initComponents();
+        seticon();
         Users user = new Users();
         user.getCurrentUser();
     }
-    
+    public void seticon() {
+       setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("favicon.png")));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +56,7 @@ public class Homepage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Phần mềm quản lý thư viện");
 
         jPanel1.setBackground(new java.awt.Color(246, 248, 250));
 
